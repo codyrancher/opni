@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -14,6 +15,7 @@ import (
 	"github.com/kralicky/ragu/pkg/plugins/golang/grpc"
 	"github.com/kralicky/ragu/pkg/plugins/python"
 	"github.com/magefile/mage/mg"
+	"github.com/magefile/mage/sh"
 	"github.com/rancher/opni/internal/codegen"
 	"github.com/rancher/opni/internal/codegen/cli"
 	_ "go.opentelemetry.io/proto/otlp/metrics/v1"
@@ -83,6 +85,19 @@ func (Generate) ProtobufPython(ctx context.Context) error {
 	return nil
 }
 
+// Build the typescript service generator plugin
+func (Generate) TypescriptServiceGenerator() error {
+	cwd, err := os.Getwd();
+	if err != nil {
+		return err
+	}
+
+	webPath := path.Join(cwd, "web")
+	os.Chdir(webPath);
+
+	return sh.RunV("yarn", "build:service-generator")
+}
+
 func (Generate) ProtobufTypescript() error {
 	destDir := "web/pkg/opni/generated"
 	esGen, err := exec.LookPath("protoc-gen-es")
@@ -106,6 +121,9 @@ func (Generate) ProtobufTypescript() error {
 					}
 				}
 			},
+		}),
+		external.NewGenerator([]string{"./web/service-generator/bin/service-generator"}, external.GeneratorOptions{
+			Opt: "target=ts",
 		}),
 	}, targets...)
 	if err != nil {
