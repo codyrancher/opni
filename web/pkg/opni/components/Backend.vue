@@ -173,15 +173,15 @@ export default {
 
       <div v-if="(enabled && !editing && $slots.details) ">
         <button class="btn role-secondary mr-5" @click="editFn">
-          Edit Config
+          {{ t('opni.actions.editConfig') }}
         </button>
         <button class="btn bg-error" @click="disableFn">
-          Uninstall
+          {{ t('opni.actions.uninstall') }}
         </button>
       </div>
 
       <button v-if="enabled && (editing || !$slots.details)" class="btn bg-error" @click="disableFn">
-        Uninstall
+        {{ t('opni.actions.uninstall') }}
       </button>
     </header>
     <Banner v-if="((enabled || editing) && status && status.message)" :color="status.state" class="mt-0">
@@ -189,17 +189,17 @@ export default {
     </Banner>
     <Banner v-if="(enabled && upgradeable)" color="success" class="mt-0">
       <div class="banner-message">
-        <span>There's an upgrade available for your cluster.</span>
+        <span>{{ t('opni.backend.status.upgradeAvailable') }}</span>
         <button class="btn bg-success" @click="upgrade">
-          Upgrade Now
+          {{ t('opni.actions.upgradeNow') }}
         </button>
       </div>
     </Banner>
     <div v-if="(!enabled && !editing)" class="body">
       <div class="not-enabled">
-        <h4>{{ title }} is not currently installed. Installing it will use additional resources on this cluster.</h4>
+        <h4>{{ t('opni.backend.installMessage', {title}) }}</h4>
         <button class="btn role-primary" @click="enable">
-          Install
+          {{ t('opni.actions.install') }}
         </button>
       </div>
     </div>
@@ -208,7 +208,7 @@ export default {
         <slot name="editing" />
         <div class="resource-footer mt-20">
           <button class="btn role-secondary mr-10" @click="cancel">
-            Cancel
+            {{ t('opni.actions.cancel') }}
           </button>
           <AsyncButton mode="edit" @click="saveFn" />
         </div>
@@ -218,7 +218,7 @@ export default {
       <slot name="editing" />
       <div v-if="editing" class="resource-footer mt-20">
         <button class="btn role-secondary mr-10" @click="cancel">
-          Cancel
+          {{ t('opni.actions.cancel') }}
         </button>
         <AsyncButton mode="edit" @click="saveFn" />
       </div>

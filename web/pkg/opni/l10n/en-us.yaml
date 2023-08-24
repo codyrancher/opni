@@ -1,4 +1,29 @@
 opni:
+  actions:
+    add: Add
+    cancel: Cancel
+    create: Create
+    editConfig: Edit Config
+    uninstall: Uninstall
+    upgradeNow: Upgrade Now
+    install: Install
+  alerting:
+    status:
+      default: Alerting is currently in an unknown state on the cluster. You can't make changes right now.
+      installed: Alerting is currently installed on the cluster.
+      installUpdating: Alerting is currently updating on the cluster. You can't make changes right now.
+      uninstalling: Alerting is currently uninstalling from the cluster . You can't make changes right now.
+    modes:
+      standalone:
+        label: Standalone
+        tooltip: This will deploy a single AlertManager instance.
+      highlyAvailable:
+        label: Highly Available
+        tooltip: This will deploy multiple AlertManager instances in order to improve resiliency.
+  backend:
+    status:
+      upgradeAvailable: There's an upgrade available for your cluster.
+    installMessage: "{title} is not currently installed. Installing it will use additional resources on this cluster."
   title: Opni - Logging / Monitoring
   description: Opni is open source software that combines everything an organization needs for multi-cluster and multi-tenant observability. Built on Kubernetes, Opni makes it easy for operators to create and manage backends, agents, and data associated with logging, monitoring, and tracing. Opni comes with AIOps built in so that users can immediately identify anomalous activity in their data.
   install: Install Opni

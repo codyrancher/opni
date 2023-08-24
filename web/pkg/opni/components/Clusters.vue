@@ -1,24 +1,20 @@
 <script>
 import SortableTable from '@shell/components/SortableTable';
 import Loading from '@shell/components/Loading';
-import { Banner } from '@components/Banner';
 import { isEmpty } from 'lodash';
 import { InstallState, getClusterStatus as getMonitoringBackendStatus } from '../utils/requests/monitoring';
 import { getOpensearchCluster } from '../utils/requests/loggingv2';
 import { getClusters } from '../utils/requests/management';
 import { getClusterStats } from '../utils/requests';
-import CapabilityButton from './CapabilityButton';
 import EditClusterDialog from './dialogs/EditClusterDialog';
 import CantDeleteClusterDialog from './dialogs/CantDeleteClusterDialog';
 
 export default {
   components: {
-    CapabilityButton,
     CantDeleteClusterDialog,
     EditClusterDialog,
     Loading,
     SortableTable,
-    Banner,
   },
   async fetch() {
     await this.load();
@@ -181,11 +177,11 @@ export default {
   <div v-else>
     <header>
       <div class="title">
-        <h1>Agents</h1>
+        <h1>{{ t('opni.nav.agents') }}</h1>
       </div>
       <div class="actions-container">
         <n-link class="btn role-primary" :to="{ name: 'agent-create' }">
-          Add
+          {{ t('opni.actions.add') }}
         </n-link>
       </div>
     </header>
@@ -193,33 +189,9 @@ export default {
       :rows="clusters"
       :headers="headers"
       :search="false"
-      default-sort-by="expirationDate"
       key-field="id"
-      :sub-rows="true"
       :rows-per-page="15"
-    >
-      <template #col:capabilities="{row}">
-        <td>
-          <CapabilityButton label="Monitoring" type="metrics" :cluster="row" :is-backend-installed="isMonitoringBackendInstalled" />
-          <CapabilityButton label="Logging" type="logs" :cluster="row" :is-backend-installed="isLoggingBackendInstalled" />
-        </td>
-      </template>
-      <template #sub-row="{row, fullColspan}">
-        <tr v-if="row.status.state === 'error' || row.status.state === 'warning'" class="sub-row">
-          <td :colspan="fullColspan">
-            <Banner class="sub-banner m-0" :label="row.status.message" :color="row.status.state" />
-          </td>
-        </tr>
-        <tr v-if="row.displayLabels.length > 0" class="sub-row">
-          <td :colspan="fullColspan" class="cluster-status">
-            Labels:
-            <span v-for="label in row.displayLabels" :key="label" class="bubble ml-5">
-              {{ label }}
-            </span>
-          </td>
-        </tr>
-      </template>
-    </SortableTable>
+    />
     <EditClusterDialog ref="dialog" @save="load" />
     <CantDeleteClusterDialog ref="cantDeleteClusterDialog" />
   </div>

@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import {
   createAlertCondition, getAlertConditionGroups, updateAlertCondition, deactivateSilenceAlertCondition, silenceAlertCondition
 } from '@pkg/opni/utils/requests/alerts';
+import MonitoringBackend from '@pkg/opni/components/MonitoringBackend';
 import { exceptionToErrorsArray } from '../../utils/error';
 import { Severity, SeverityResponseToEnum } from '../../models/alerting/Condition';
 import { getClusters } from '../../utils/requests/management';
@@ -19,7 +20,6 @@ import { createConditionRequest } from './shared';
 import AgentDisconnect from './AgentDisconnect';
 import KubeState from './KubeState';
 import DownstreamCapability from './DownstreamCapability';
-import MonitoringBackend from './MonitoringBackend';
 import Prometheus from './Prometheus';
 
 export function createDefaultConfig() {

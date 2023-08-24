@@ -88,13 +88,13 @@ export default {
     bannerMessage(status) {
       switch (status) {
       case InstallState.InstallUpdating:
-        return `Alerting is currently updating on the cluster. You can't make changes right now.`;
+        return this.t('opni.alerting.status.installUpdating');
       case InstallState.Uninstalling:
-        return `Alerting is currently uninstalling from the cluster . You can't make changes right now.`;
+        return this.t('opni.alerting.status.uninstalling');
       case InstallState.Installed:
-        return `Alerting is currently installed on the cluster.`;
+        return this.t('opni.alerting.status.installed');
       default:
-        return `Alerting is currently in an unknown state on the cluster. You can't make changes right now.`;
+        return this.t('opni.alerting.status.default');
       }
     },
 
