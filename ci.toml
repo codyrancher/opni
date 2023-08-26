@@ -1,0 +1,111 @@
+lint = true
+test = true
+
+[charts]
+
+  [charts.git]
+    branch = ""
+    export = false
+    push = false
+    repo = "docker.io/username"
+
+    [charts.git.auth]
+      email = ""
+      username = ""
+
+  [charts.oci]
+    push = false
+    repo = "docker.io/username"
+
+    [charts.oci.auth]
+      email = ""
+      username = ""
+
+[coverage]
+  export = false
+
+[images]
+
+  [images.minimal]
+    additional-tags = []
+    push = false
+    repo = "docker.io/username"
+    tag = "latest"
+    tag-suffix = "-minimal"
+
+    [images.minimal.auth]
+      email = ""
+      username = ""
+
+  [images.opensearch]
+
+    [images.opensearch.build]
+      dashboards-version = "2.8.0"
+      opensearch-version = "2.8.0"
+      plugin-version = "0.11.0-rc2"
+
+    [images.opensearch.dashboards]
+      additional-tags = []
+      push = false
+      repo = "docker.io/username"
+      tag = "latest"
+      tag-suffix = ""
+
+      [images.opensearch.dashboards.auth]
+        email = ""
+        username = ""
+
+    [images.opensearch.opensearch]
+      additional-tags = []
+      push = false
+      repo = "docker.io/username"
+      tag = "latest"
+      tag-suffix = ""
+
+      [images.opensearch.opensearch.auth]
+        email = ""
+        username = ""
+
+    [images.opensearch.update-service]
+      additional-tags = []
+      push = false
+      repo = "docker.io/username"
+      tag = "latest"
+      tag-suffix = ""
+
+      [images.opensearch.update-service.auth]
+        email = ""
+        username = ""
+
+  [images.opni]
+    additional-tags = []
+    push = false
+    repo = "docker.io/username"
+    tag = "latest"
+    tag-suffix = ""
+
+    [images.opni.auth]
+      email = ""
+      username = ""
+
+  [images.python-base]
+    additional-tags = []
+    push = false
+    repo = "docker.io/username"
+    tag = "latest"
+    tag-suffix = ""
+
+    [images.python-base.auth]
+      email = ""
+      username = ""
+
+  [images.python-torch]
+    additional-tags = []
+    push = false
+    repo = "docker.io/username"
+    tag = "latest"
+    tag-suffix = "-torch"
+
+    [images.python-torch.auth]
+      email = ""
+      username = ""
