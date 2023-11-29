@@ -3,13 +3,23 @@ import { mapGetters } from 'vuex';
 import SortableTable from '@shell/components/SortableTable';
 import Loading from '@shell/components/Loading';
 import GlobalEventBus from '@pkg/opni/utils/GlobalEventBus';
-import { getRoles } from '../utils/requests/management';
+import { propValidator } from '@pkg/opni/utils/backends';
+import { Core, Management } from '@pkg/opni/api/opni';
 import AddTokenDialog from './dialogs/AddTokenDialog';
 
 export default {
   components: {
     AddTokenDialog, Loading, SortableTable
   },
+
+  props: {
+    backend: {
+      type:      String,
+      required:  true,
+      validator: propValidator
+    }
+  },
+
   async fetch() {
     await this.load();
   },
@@ -72,7 +82,14 @@ export default {
     async load() {
       try {
         this.loading = true;
-        const roles = await getRoles(this);
+
+        const capability = new Core.types.CapabilityType({ name: this.backend });
+        const roleReferences = (await Management.service.ListBackendRoles(capability)).items;
+        const roles = await Promise.all(roleReferences.map((roleRef) => {
+          const requestInput = new Core.types.BackendRoleRequest({ capability, roleRef });
+
+          return Management.service.GetBackendRole(requestInput);
+        }));
 
         this.$set(this, 'roles', roles);
       } finally {

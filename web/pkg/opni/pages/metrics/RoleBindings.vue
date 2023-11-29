@@ -1,7 +1,7 @@
 <script>
-import Main from '../components/Main';
-import { choosePageLayout } from '../utils/standalone';
-import RoleBindings from '../components/RoleBindings';
+import Main from '@pkg/opni/components/Main';
+import { choosePageLayout } from '@pkg/opni/utils/standalone';
+import RoleBindings from '@pkg/opni/components/RoleBindings';
 
 export default {
   components: { RoleBindings, Main },
@@ -13,6 +13,6 @@ export default {
 </script>
 <template>
   <Main>
-    <RoleBindings />
+    <RoleBindings backend="metrics" />
   </Main>
 </template>

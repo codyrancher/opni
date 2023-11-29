@@ -23,7 +23,9 @@ export const DriverUtil = { types: DriverUtilTypes };
 
 export const Storage = { types: StorageTypes };
 
-export const Core = { types: CoreTypes };
+export namespace Core {
+  export import Types = CoreTypes;
+}
 
 export const Capability = { types: CapabilityTypes };
 

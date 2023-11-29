@@ -1,7 +1,7 @@
 <script>
-import Main from '../components/Main';
-import { choosePageLayout } from '../utils/standalone';
-import Role from '../components/Role';
+import Main from '@pkg/opni/components/Main';
+import Role from '@pkg/opni/components/Role';
+import { choosePageLayout } from '@pkg/opni/utils/standalone';
 
 export default {
   components: { Role, Main },
@@ -13,6 +13,6 @@ export default {
 </script>
 <template>
   <Main>
-    <Role />
+    <Role backend="metrics" />
   </Main>
 </template>

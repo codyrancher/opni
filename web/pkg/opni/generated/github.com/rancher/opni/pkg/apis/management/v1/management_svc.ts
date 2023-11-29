@@ -13,11 +13,11 @@ import { InstallResponse, NodeCapabilityStatus } from "../../capability/v1/capab
 
 export async function CreateBootstrapToken(input: CreateBootstrapTokenRequest): Promise<BootstrapToken> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CreateBootstrapToken:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -26,7 +26,7 @@ export async function CreateBootstrapToken(input: CreateBootstrapTokenRequest): 
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/tokens`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = BootstrapToken.fromBinary(new Uint8Array(rawResponse));
@@ -44,11 +44,11 @@ export async function CreateBootstrapToken(input: CreateBootstrapTokenRequest): 
 
 export async function RevokeBootstrapToken(input: Reference): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-RevokeBootstrapToken:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'delete',
       responseType: 'arraybuffer',
@@ -57,7 +57,7 @@ export async function RevokeBootstrapToken(input: Reference): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/tokens/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -75,7 +75,7 @@ export async function RevokeBootstrapToken(input: Reference): Promise<void> {
 
 export async function ListBootstrapTokens(): Promise<BootstrapTokenList> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -101,11 +101,11 @@ export async function ListBootstrapTokens(): Promise<BootstrapTokenList> {
 
 export async function GetBootstrapToken(input: Reference): Promise<BootstrapToken> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-GetBootstrapToken:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -114,7 +114,7 @@ export async function GetBootstrapToken(input: Reference): Promise<BootstrapToke
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/tokens/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = BootstrapToken.fromBinary(new Uint8Array(rawResponse));
@@ -132,11 +132,11 @@ export async function GetBootstrapToken(input: Reference): Promise<BootstrapToke
 
 export async function ListClusters(input: ListClustersRequest): Promise<ClusterList> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-ListClusters:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -145,7 +145,7 @@ export async function ListClusters(input: ListClustersRequest): Promise<ClusterL
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = ClusterList.fromBinary(new Uint8Array(rawResponse));
@@ -191,11 +191,11 @@ export function WatchClusters(input: WatchClustersRequest, callback: (data: Watc
 
 export async function DeleteCluster(input: Reference): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-DeleteCluster:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'delete',
       responseType: 'arraybuffer',
@@ -204,7 +204,7 @@ export async function DeleteCluster(input: Reference): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -222,7 +222,7 @@ export async function DeleteCluster(input: Reference): Promise<void> {
 
 export async function CertsInfo(): Promise<CertsInfoResponse> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -248,11 +248,11 @@ export async function CertsInfo(): Promise<CertsInfoResponse> {
 
 export async function GetCluster(input: Reference): Promise<Cluster> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-GetCluster:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -261,7 +261,7 @@ export async function GetCluster(input: Reference): Promise<Cluster> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = Cluster.fromBinary(new Uint8Array(rawResponse));
@@ -279,11 +279,11 @@ export async function GetCluster(input: Reference): Promise<Cluster> {
 
 export async function GetClusterHealthStatus(input: Reference): Promise<HealthStatus> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-GetClusterHealthStatus:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -292,7 +292,7 @@ export async function GetClusterHealthStatus(input: Reference): Promise<HealthSt
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.id}/health`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = HealthStatus.fromBinary(new Uint8Array(rawResponse));
@@ -338,11 +338,11 @@ export function WatchClusterHealthStatus(input: Empty, callback: (data: ClusterH
 
 export async function EditCluster(input: EditClusterRequest): Promise<Cluster> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-EditCluster:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'put',
       responseType: 'arraybuffer',
@@ -351,7 +351,7 @@ export async function EditCluster(input: EditClusterRequest): Promise<Cluster> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.cluster.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = Cluster.fromBinary(new Uint8Array(rawResponse));
@@ -369,11 +369,11 @@ export async function EditCluster(input: EditClusterRequest): Promise<Cluster> {
 
 export async function CreateRole(input: Role): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CreateRole:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -382,7 +382,7 @@ export async function CreateRole(input: Role): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/roles`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -400,11 +400,11 @@ export async function CreateRole(input: Role): Promise<void> {
 
 export async function UpdateRole(input: Role): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-UpdateRole:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'put',
       responseType: 'arraybuffer',
@@ -413,7 +413,7 @@ export async function UpdateRole(input: Role): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/roles`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -431,11 +431,11 @@ export async function UpdateRole(input: Role): Promise<void> {
 
 export async function DeleteRole(input: Reference): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-DeleteRole:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'delete',
       responseType: 'arraybuffer',
@@ -444,7 +444,7 @@ export async function DeleteRole(input: Reference): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/roles/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -462,11 +462,11 @@ export async function DeleteRole(input: Reference): Promise<void> {
 
 export async function GetRole(input: Reference): Promise<Role> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-GetRole:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -475,7 +475,7 @@ export async function GetRole(input: Reference): Promise<Role> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/roles/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = Role.fromBinary(new Uint8Array(rawResponse));
@@ -493,11 +493,11 @@ export async function GetRole(input: Reference): Promise<Role> {
 
 export async function CreateRoleBinding(input: RoleBinding): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CreateRoleBinding:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -506,7 +506,7 @@ export async function CreateRoleBinding(input: RoleBinding): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/rolebindings`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -524,11 +524,11 @@ export async function CreateRoleBinding(input: RoleBinding): Promise<void> {
 
 export async function UpdateRoleBinding(input: RoleBinding): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-UpdateRoleBinding:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'put',
       responseType: 'arraybuffer',
@@ -537,7 +537,7 @@ export async function UpdateRoleBinding(input: RoleBinding): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/rolebindings`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -555,11 +555,11 @@ export async function UpdateRoleBinding(input: RoleBinding): Promise<void> {
 
 export async function DeleteRoleBinding(input: Reference): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-DeleteRoleBinding:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'delete',
       responseType: 'arraybuffer',
@@ -568,7 +568,7 @@ export async function DeleteRoleBinding(input: Reference): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/rolebindings/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -586,11 +586,11 @@ export async function DeleteRoleBinding(input: Reference): Promise<void> {
 
 export async function GetRoleBinding(input: Reference): Promise<RoleBinding> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-GetRoleBinding:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -599,7 +599,7 @@ export async function GetRoleBinding(input: Reference): Promise<RoleBinding> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/rolebindings/${input.id}`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = RoleBinding.fromBinary(new Uint8Array(rawResponse));
@@ -617,7 +617,7 @@ export async function GetRoleBinding(input: Reference): Promise<RoleBinding> {
 
 export async function ListRoles(): Promise<RoleList> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -643,7 +643,7 @@ export async function ListRoles(): Promise<RoleList> {
 
 export async function ListRoleBindings(): Promise<RoleBindingList> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -669,11 +669,11 @@ export async function ListRoleBindings(): Promise<RoleBindingList> {
 
 export async function SubjectAccess(input: SubjectAccessRequest): Promise<ReferenceList> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-SubjectAccess:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -682,7 +682,7 @@ export async function SubjectAccess(input: SubjectAccessRequest): Promise<Refere
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/subjectaccess`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = ReferenceList.fromBinary(new Uint8Array(rawResponse));
@@ -700,7 +700,7 @@ export async function SubjectAccess(input: SubjectAccessRequest): Promise<Refere
 
 export async function APIExtensions(): Promise<APIExtensionInfoList> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -726,7 +726,7 @@ export async function APIExtensions(): Promise<APIExtensionInfoList> {
 
 export async function GetConfig(): Promise<GatewayConfig> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -752,11 +752,11 @@ export async function GetConfig(): Promise<GatewayConfig> {
 
 export async function UpdateConfig(input: UpdateConfigRequest): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-UpdateConfig:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'put',
       responseType: 'arraybuffer',
@@ -765,7 +765,7 @@ export async function UpdateConfig(input: UpdateConfigRequest): Promise<void> {
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/config`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -783,7 +783,7 @@ export async function UpdateConfig(input: UpdateConfigRequest): Promise<void> {
 
 export async function ListCapabilities(): Promise<CapabilityList> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -809,11 +809,11 @@ export async function ListCapabilities(): Promise<CapabilityList> {
 
 export async function CapabilityInstaller(input: CapabilityInstallerRequest): Promise<CapabilityInstallerResponse> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CapabilityInstaller:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -822,7 +822,7 @@ export async function CapabilityInstaller(input: CapabilityInstallerRequest): Pr
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/capabilities/${input.name}/installer`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = CapabilityInstallerResponse.fromBinary(new Uint8Array(rawResponse));
@@ -840,11 +840,11 @@ export async function CapabilityInstaller(input: CapabilityInstallerRequest): Pr
 
 export async function InstallCapability(input: CapabilityInstallRequest): Promise<InstallResponse> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-InstallCapability:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -853,7 +853,7 @@ export async function InstallCapability(input: CapabilityInstallRequest): Promis
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.target.cluster.id}/capabilities/${input.name}/install`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = InstallResponse.fromBinary(new Uint8Array(rawResponse));
@@ -871,11 +871,11 @@ export async function InstallCapability(input: CapabilityInstallRequest): Promis
 
 export async function UninstallCapability(input: CapabilityUninstallRequest): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-UninstallCapability:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -884,7 +884,7 @@ export async function UninstallCapability(input: CapabilityUninstallRequest): Pr
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.target.cluster.id}/capabilities/${input.name}/uninstall`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -902,11 +902,11 @@ export async function UninstallCapability(input: CapabilityUninstallRequest): Pr
 
 export async function CapabilityStatus(input: CapabilityStatusRequest): Promise<NodeCapabilityStatus> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CapabilityStatus:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -915,7 +915,7 @@ export async function CapabilityStatus(input: CapabilityStatusRequest): Promise<
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.cluster.id}/capabilities/${input.name}/status`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = NodeCapabilityStatus.fromBinary(new Uint8Array(rawResponse));
@@ -933,11 +933,11 @@ export async function CapabilityStatus(input: CapabilityStatusRequest): Promise<
 
 export async function CapabilityUninstallStatus(input: CapabilityStatusRequest): Promise<TaskStatus> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CapabilityUninstallStatus:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -946,7 +946,7 @@ export async function CapabilityUninstallStatus(input: CapabilityStatusRequest):
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.cluster.id}/capabilities/${input.name}/uninstall/status`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = TaskStatus.fromBinary(new Uint8Array(rawResponse));
@@ -964,11 +964,11 @@ export async function CapabilityUninstallStatus(input: CapabilityStatusRequest):
 
 export async function CancelCapabilityUninstall(input: CapabilityUninstallCancelRequest): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-CancelCapabilityUninstall:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'post',
       responseType: 'arraybuffer',
@@ -977,7 +977,7 @@ export async function CancelCapabilityUninstall(input: CapabilityUninstallCancel
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/clusters/${input.cluster.id}/capabilities/${input.name}/uninstall/cancel`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;
@@ -995,7 +995,7 @@ export async function CancelCapabilityUninstall(input: CapabilityUninstallCancel
 
 export async function GetDashboardSettings(): Promise<DashboardSettings> {
   try {
-    
+
     const rawResponse = (await axios.request({
       method: 'get',
       responseType: 'arraybuffer',
@@ -1021,11 +1021,11 @@ export async function GetDashboardSettings(): Promise<DashboardSettings> {
 
 export async function UpdateDashboardSettings(input: DashboardSettings): Promise<void> {
   try {
-    
+
     if (input) {
       console.info('Here is the input for a request to Management-UpdateDashboardSettings:', input);
     }
-  
+
     const rawResponse = (await axios.request({
       method: 'put',
       responseType: 'arraybuffer',
@@ -1034,7 +1034,7 @@ export async function UpdateDashboardSettings(input: DashboardSettings): Promise
         'Accept': 'application/octet-stream',
       },
       url: `/opni-api/Management/dashboard/settings`,
-    data: input?.toBinary() as ArrayBuffer
+      data: input?.toBinary() as ArrayBuffer
     })).data;
 
     const response = rawResponse;

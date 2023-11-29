@@ -1,6 +1,6 @@
-import { deleteRole } from '../utils/requests/management';
-import { findBy } from '../utils/array';
-import { Resource } from './Resource';
+import { deleteRole } from '@pkg/opni/utils/requests/management';
+import { findBy } from '@pkg/opni/utils/array';
+import { Resource } from '@pkg/opni/models/Resource';
 
 export interface MatchExpression {
     key: string;
@@ -48,7 +48,7 @@ export class Role extends Resource {
     }
 
     get clusters() {
-      return this.vue.$store.getters['opni/clusters'];
+      return []; // this.vue.$store.getters['opni/clusters'];
     }
 
     get clusterNames() {

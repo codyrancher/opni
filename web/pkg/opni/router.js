@@ -2,10 +2,12 @@ import { isStandalone } from './utils/standalone';
 import MonitoringBackend from './pages/MonitoringBackend';
 import Clusters from './pages/Clusters';
 import Cluster from './pages/Cluster';
-import Roles from './pages/Roles';
-import Role from './pages/Role';
-import RoleBindings from './pages/RoleBindings';
-import RoleBinding from './pages/RoleBinding';
+
+import MetricRoles from './pages/metrics/Roles';
+import MetricRole from './pages/metrics/Role';
+import MetricRoleBindings from './pages/metrics/RoleBindings';
+import MetricRoleBinding from './pages/metrics/RoleBinding';
+
 import Configuration from './pages/Configuration';
 import LoggingBackend from './pages/LoggingBackend';
 import SLOs from './pages/SLOs';
@@ -94,13 +96,13 @@ export const NAVIGATION = {
               name:      'roles',
               path:      '/roles',
               labelKey:  'opni.nav.roles',
-              component: Roles,
+              component: MetricRoles,
               routes:    [
                 {
                   name:      'role-create',
                   path:      '/create',
                   labelKey:  'opni.nav.roles',
-                  component: Role,
+                  component: MetricRole,
                   display:   false
                 },
               ]
@@ -109,13 +111,13 @@ export const NAVIGATION = {
               name:      'role-bindings',
               path:      '/role-bindings',
               labelKey:  'opni.nav.roleBindings',
-              component: RoleBindings,
+              component: MetricRoleBindings,
               routes:    [
                 {
                   name:      'role-binding-create',
                   path:      '/create',
                   labelKey:  'opni.nav.roleBindings',
-                  component: RoleBinding,
+                  component: MetricRoleBinding,
                   display:   false
                 },
               ]

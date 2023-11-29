@@ -2,6 +2,8 @@
 import SortableTable from '@shell/components/SortableTable';
 import Loading from '@shell/components/Loading';
 import GlobalEventBus from '@pkg/opni/utils/GlobalEventBus';
+import { propValidator } from '@pkg/opni/utils/backends';
+import { Core, Management } from '@pkg/opni/api/opni';
 import { getRoleBindings } from '../utils/requests/management';
 import AddTokenDialog from './dialogs/AddTokenDialog';
 
@@ -9,6 +11,15 @@ export default {
   components: {
     AddTokenDialog, Loading, SortableTable
   },
+
+  props: {
+    backend: {
+      type:      String,
+      required:  true,
+      validator: propValidator
+    }
+  },
+
   async fetch() {
     await this.load();
   },
@@ -63,7 +74,10 @@ export default {
     async load() {
       try {
         this.loading = true;
-        await this.$set(this, 'roleBindings', await getRoleBindings(this));
+
+        const roleBindings = (await Management.service.ListRoleBindings()).items;
+
+        await this.$set(this, 'roleBindings', roleBindings);
       } finally {
         this.loading = false;
       }

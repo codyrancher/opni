@@ -7,6 +7,7 @@ import Tab from '@shell/components/Tabbed/Tab';
 import Tabbed from '@shell/components/Tabbed';
 import ArrayList from '@shell/components/form/ArrayList';
 import { Banner } from '@components/Banner';
+import { propValidator } from '@pkg/opni/utils/backends';
 import { exceptionToErrorsArray } from '../utils/error';
 import { createRoleBinding, getRoles } from '../utils/requests/management';
 
@@ -20,6 +21,14 @@ export default {
     Tabbed,
     ArrayList,
     Banner,
+  },
+
+  props: {
+    backend: {
+      type:      String,
+      required:  true,
+      validator: propValidator
+    }
   },
 
   async fetch() {

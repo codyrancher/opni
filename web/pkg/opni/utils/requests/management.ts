@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { HandleClusterHealthStatusEvent, HandleClusterWatchEvent } from '@pkg/opni/store';
 import { Empty } from '@bufbuild/protobuf';
+import { MatchLabel, Role, RoleResponse, RolesResponse } from '@pkg/opni/models/Management/Role';
 import { NodeCapabilityStatus } from '../../models/Capability';
 import { Management } from '../../api/opni';
 import { WatchClustersRequest } from '../../generated/github.com/rancher/opni/pkg/apis/management/v1/management_pb';
 import { TokensResponse, Token } from '../../models/Token';
 import { CapabilityStatusResponse } from '../../models/Cluster';
-import { MatchLabel, Role, RolesResponse } from '../../models/Role';
-import { RoleBinding, RoleBindingsResponse } from '../../models/RoleBinding';
+import { RoleBinding, RoleBindingsResponse } from '../../models/Management/RoleBinding';
 import { GatewayConfig, ConfigDocument } from '../../models/Config';
 import { LABEL_KEYS } from '../../models/shared';
 import { base64Encode } from '../crypto';

@@ -9,6 +9,8 @@ import ArrayListSelect from '@shell/components/form/ArrayListSelect';
 import KeyValue from '@shell/components/form/KeyValue';
 import MatchExpressions from '@shell/components/form/MatchExpressions';
 import { createRole } from '@pkg/opni/utils/requests/management';
+import { Core, Management } from '@pkg/opni/api/opni';
+import { propValidator } from '@pkg/opni/utils/backends';
 import { exceptionToErrorsArray } from '../utils/error';
 
 export default {
@@ -23,12 +25,21 @@ export default {
     Banner,
   },
 
+  props: {
+    backend: {
+      type:      String,
+      required:  true,
+      validator: propValidator
+    }
+  },
+
   data() {
     return {
       name:             '',
       roleName:         '',
       subjects:         [],
       taints:           [],
+      subject:          '',
       clusterIds:       [],
       matchLabels:      {},
       matchExpressions: [],
@@ -45,7 +56,9 @@ export default {
         return;
       }
       try {
-        await createRole(this.name, this.clusterIds, this.matchLabelsToSave);
+        const role = new Core.Types.Role({});
+
+        await Management.service.CreateRole(role);
       } catch (err) {
         this.$set(this, 'error', exceptionToErrorsArray(err).join('; '));
         buttonCallback(false);

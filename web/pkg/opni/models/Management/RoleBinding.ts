@@ -1,21 +1,11 @@
-import { deleteRoleBinding } from '../utils/requests/management';
-import { Resource } from './Resource';
-
-export interface RoleBindingResponse {
-  id: string;
-  roleId: string;
-  subjects: string[];
-  taints: string[];
-}
-
-export interface RoleBindingsResponse {
-  items: RoleBindingResponse[];
-}
+import { deleteRoleBinding } from '@pkg/opni/utils/requests/management';
+import { Resource } from '@pkg/opni/models/Resource';
+import { Core } from '@pkg/opni/api/opni';
 
 export class RoleBinding extends Resource {
-    private base: RoleBindingResponse;
+    private base: Core.Types.RoleBinding;
 
-    constructor(base: RoleBindingResponse, vue: any) {
+    constructor(base: Core.Types.RoleBinding, vue: any) {
       super(vue);
       this.base = base;
     }
